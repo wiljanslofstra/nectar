@@ -1,0 +1,16 @@
+{
+  "version": "0.0.1",
+  "name": "nectar",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "bun ./src/index.ts",
+    "test": "bun wiptest"
+  },
+  "dependencies": {
+    "joi": "^17.6",
+    "mailchimp-api-v3": "^1.15.0"
+  },
+  "devDependencies": {
+    "bun-types": "^0.0.83"
+  }
+}

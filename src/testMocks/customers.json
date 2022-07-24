@@ -1,0 +1,15 @@
+[
+    {
+        "first_name": "Wiljan",
+        "last_name": "Slofstra",
+        "email_address": "wiljanslofstra@gmail.com",
+        "status": "subscribed",
+        "language": "nl-NL",
+        "custom_fields": {
+            "order_count": 2
+        },
+        "tags": [
+            "test"
+        ]
+    }
+]
