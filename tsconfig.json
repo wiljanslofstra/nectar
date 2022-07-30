@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "lib": ["ESNext"],
-    "module": "esnext",
     "target": "esnext",
-    // "bun-types" is the important part
-    "types": ["bun-types"],
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true
+    "module": "commonjs",
+    "rootDir": "./",
+    "outDir": "./build",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "moduleResolution":"node"
   }
 }

@@ -3,5 +3,9 @@
  * Do not modify this file manually
  */
 
-export * from './customer';
-export * from './store';
+export interface Store {
+  currency_code?: string;
+  id: string;
+  list_id: string;
+  name: string;
+}

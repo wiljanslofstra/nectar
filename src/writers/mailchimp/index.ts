@@ -1,12 +1,12 @@
-import Mailchimp from 'mailchimp-api-v3';
 import { Customer } from './../../types/customer';
 import { WriterInput, WriterResponse } from './../../types/writer';
+const Mailchimp = require('mailchimp-api-v3');
 
 export default class MailchimpWriter {
-  mailchimp: Mailchimp;
+  mailchimp: typeof Mailchimp;
 
-  constructor(key: string) {
-    this.mailchimp = new Mailchimp(key);
+  constructor(mailchimp: typeof Mailchimp) {
+    this.mailchimp = mailchimp;
   }
 
   write(input: WriterInput): WriterResponse {
@@ -15,7 +15,7 @@ export default class MailchimpWriter {
     }
 
     return {
-
+      //
     };
   }
 
