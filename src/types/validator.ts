@@ -1,4 +1,4 @@
-import { Customer } from './input';
+import { Customer } from './customer';
 
 export interface ValidatorResponse<T> {
   error?: Error;

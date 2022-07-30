@@ -1,4 +1,4 @@
-import config from './config';
+import Config from './types/config';
 import { FetchResponses } from './types/reader';
 import { Validators } from './types/validator';
 import customerValidator from './validators/customerValidator';
@@ -8,11 +8,25 @@ const validators: Validators = {
 };
 
 class Nectar {
+  config: Config;
+
+  constructor(config: Config) {
+    this.config = config;
+  }
+
   async run() {
     const fetchResponses = await this.fetch();
     const { errors, values } = this.validateFetchResponses(fetchResponses);
 
-    console.log(errors, values);
+    if (Object.keys(errors).length) {
+      throw new Error(JSON.stringify(values, undefined, 2));
+    }
+
+    this.config.writers.forEach((writer) => {
+      writer.write({
+        customers: values.customers,
+      });
+    });
   }
 
   validateFetchResponses(fetchResponses: FetchResponses) {
@@ -63,7 +77,7 @@ class Nectar {
 
   async fetch(): Promise<FetchResponses> {
     const fetchResponses: FetchResponses = {};
-    const { reader, readerPaths } = config;
+    const { reader, readerPaths } = this.config;
 
     for (const [key, readerPath] of Object.entries(readerPaths)) {
       // Fetch data to be exported
@@ -80,4 +94,4 @@ class Nectar {
   }
 }
 
-(new Nectar).run();
+export default Nectar;

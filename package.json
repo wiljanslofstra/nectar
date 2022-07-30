@@ -3,11 +3,13 @@
   "name": "nectar",
   "main": "src/index.ts",
   "scripts": {
-    "start": "bun ./src/index.ts",
-    "test": "bun wiptest"
+    "start": "bun ./src/cli.ts",
+    "test": "bun wiptest",
+    "schemas-to-types": "bun ./schemasToTypes.ts"
   },
   "dependencies": {
     "joi": "^17.6",
+    "joi-to-typescript": "^4.0.5",
     "mailchimp-api-v3": "^1.15.0"
   },
   "devDependencies": {
