@@ -2,7 +2,7 @@ import MailchimpWriter from '.';
 import StubReader from '../../readers/stubReader';
 import Mailchimp from './mailchimp-type';
 
-const mailchimpMock: Mailchimp = { 
+const mailchimpMock: Mailchimp = {
   get: async () => {},
   post: async () => {},
   put: async () => {},
@@ -18,7 +18,7 @@ test('should handle customers', async () => {
   if (!inputCustomers || !Array.isArray(inputCustomers)) {
     throw new Error('customers should not be null or empty');
   }
- 
+
   const mailchimp = {
     ...mailchimpMock,
     batch: jest.fn(() => {
@@ -27,7 +27,7 @@ test('should handle customers', async () => {
       });
     }),
   };
-  
+
   const res = await (new MailchimpWriter(mailchimp)).writeCustomers('store123', inputCustomers);
 
   expect(res.errors).toHaveLength(1);
@@ -41,7 +41,7 @@ test('should handle members', async () => {
   if (!inputMembers || !Array.isArray(inputMembers)) {
     throw new Error('members should not be null or empty');
   }
- 
+
   const mailchimp = {
     ...mailchimpMock,
     batch: jest.fn(() => {
@@ -50,7 +50,7 @@ test('should handle members', async () => {
       });
     }),
   };
-  
+
   const res = await (new MailchimpWriter(mailchimp)).writeMembers(inputMembers);
 
   expect(res.errors).toHaveLength(1);

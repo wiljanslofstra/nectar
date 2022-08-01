@@ -1,4 +1,4 @@
-import { Member } from './../types/member';
+import { Member } from '../types/member';
 import schema from '../schemas/member';
 import { ValidatorResponse } from '../types/validator';
 

@@ -33,4 +33,4 @@ type Path = string;
 type Options = {};
 type PathOrOptions = Path | Options;
 type Query = string;
-type Body = {}
+type Body = {};

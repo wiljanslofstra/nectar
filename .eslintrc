@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "ignorePatterns": [
+    "jest.config.js",
+    "build/**/*"
+  ],
+  "rules": {
+    "arrow-body-style": 0
+  }
+}

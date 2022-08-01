@@ -1,11 +1,10 @@
-import { Member } from './../../types/member';
-import { Store } from './../../types/store';
-import { Site } from './../../types/site';
-import { Customer } from './../../types/customer';
-import { WriterInput, WriterResponse } from './../../types/writer';
-import MailchimpType from './mailchimp-type';
-const Mailchimp = require('mailchimp-api-v3');
 import crypto from 'crypto';
+import { Member } from '../../types/member';
+import { Store } from '../../types/store';
+import { Site } from '../../types/site';
+import { Customer } from '../../types/customer';
+import { WriterInput, WriterResponse } from '../../types/writer';
+import MailchimpType from './mailchimp-type';
 
 export default class MailchimpWriter {
   mailchimp: MailchimpType;
@@ -43,6 +42,7 @@ export default class MailchimpWriter {
     };
   }
 
+  // eslint-disable-next-line class-methods-use-this
   async writeSite(site: Site) {
     console.log(site);
   }
@@ -64,7 +64,7 @@ export default class MailchimpWriter {
         });
       });
     });
-    
+
     const res = await this.mailchimp.batch(updates);
 
     if (!Array.isArray(res)) {
@@ -79,6 +79,7 @@ export default class MailchimpWriter {
     };
   }
 
+  // eslint-disable-next-line class-methods-use-this
   async writeStore(store: Store) {
     console.log(store);
   }
@@ -101,7 +102,7 @@ export default class MailchimpWriter {
         },
       };
     });
-    
+
     const res = await this.mailchimp.batch(updates);
 
     if (!Array.isArray(res)) {

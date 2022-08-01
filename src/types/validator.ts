@@ -9,4 +9,4 @@ export type Validator<T> = (obj: any) => ValidatorResponse<T>;
 
 export type Validators = {
   customers: Validator<Customer>;
-}
+};

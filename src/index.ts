@@ -33,12 +33,13 @@ class Nectar {
   }
 
   validateFetchResponses(fetchResponses: FetchResponses) {
-    const errors: {[key: string]: Error[]} = {};
-    const values: {[key: string]: any[]} = {};
+    const errors: { [key: string]: Error[] } = {};
+    const values: { [key: string]: any[] } = {};
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const [key, items] of Object.entries(fetchResponses)) {
-      const { 
-        errors: itemErrors, 
+      const {
+        errors: itemErrors,
         itemValues,
       } = this.validateFetchResponse(key, items);
 
@@ -52,7 +53,8 @@ class Nectar {
     return { errors, values };
   }
 
-  validateFetchResponse(key: string, items: any[]|object) {
+  // eslint-disable-next-line class-methods-use-this
+  validateFetchResponse(key: string, items: any[] | object) {
     const validator = validators[key as keyof Validators];
 
     if (!validator) {
@@ -67,7 +69,7 @@ class Nectar {
       items.forEach((item) => {
         // Validate the object
         const { error, value } = validator(item);
-        
+
         if (error) {
           errors.push(error);
           return;
@@ -81,8 +83,8 @@ class Nectar {
 
     const { error, value } = validator(items);
 
-    return { 
-      errors: error ? [error] : [], 
+    return {
+      errors: error ? [error] : [],
       itemValues: [value],
     };
   }
@@ -91,10 +93,12 @@ class Nectar {
     const fetchResponses: FetchResponses = {};
     const { reader, readerPaths } = this.config;
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const [key, readerPath] of Object.entries(readerPaths)) {
       // Fetch data to be exported
+      // eslint-disable-next-line no-await-in-loop
       const response = await reader.fetch(readerPath);
-  
+
       if (!response) {
         throw new Error(`Could not fetch ${readerPath}`);
       }

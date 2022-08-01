@@ -7,9 +7,9 @@ test('should validate succesfully', async () => {
   if (!members || !Array.isArray(members)) {
     throw new Error('members should not be null or empty');
   }
-  
+
   members.forEach((member) => {
-    const { error, value } = memberValidator(member);
+    const { error } = memberValidator(member);
 
     expect(error).toBe(undefined);
   });
@@ -21,14 +21,14 @@ test('should return errors', async () => {
   if (!members || !Array.isArray(members)) {
     throw new Error('members should not be null or empty');
   }
-  
+
   members.forEach((member) => {
-    const { error, value } = memberValidator(member);
+    const { error } = memberValidator(member);
 
     if (!error) {
       throw new Error('error should not be empty');
     }
-    
+
     const hasEmailError = error.message.indexOf('"email_address" is required') >= 0;
     const hasLanguageError = error.message.indexOf('"language" is required') >= 0;
 

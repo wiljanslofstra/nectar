@@ -4,7 +4,7 @@ import { Member } from './member';
 import { Customer } from './customer';
 
 export type WriterResponse = {
-  
+
 };
 
 export type WriterInput = {

@@ -7,9 +7,9 @@ test('should validate succesfully', async () => {
   if (!customers || !Array.isArray(customers)) {
     throw new Error('customers should not be null or empty');
   }
-  
+
   customers.forEach((customer) => {
-    const { error, value } = customerValidator(customer);
+    const { error } = customerValidator(customer);
 
     expect(error).toBe(undefined);
   });
@@ -21,14 +21,14 @@ test('should return errors', async () => {
   if (!customers || !Array.isArray(customers)) {
     throw new Error('customers should not be null or empty');
   }
-  
+
   customers.forEach((customer) => {
-    const { error, value } = customerValidator(customer);
+    const { error } = customerValidator(customer);
 
     if (!error) {
       throw new Error('error should not be empty');
     }
-    
+
     const hasEmailError = error.message.indexOf('"email_address" is required') >= 0;
     const hasLanguageError = error.message.indexOf('"language" is required') >= 0;
 
