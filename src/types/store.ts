@@ -4,7 +4,7 @@
  */
 
 export interface Store {
-  currency_code?: string;
+  currency_code?: 'USD' | 'EUR' | 'GBP' | 'AUD' | 'INR' | 'NZD' | 'BRL' | 'DKK' | 'SEK' | 'SGD' | 'ZAR' | 'CHF' | 'MXN' | 'CAD' | 'HKD' | 'JPY';
   id: string;
   list_id: string;
   name: string;

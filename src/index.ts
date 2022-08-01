@@ -24,7 +24,10 @@ class Nectar {
 
     this.config.writers.forEach((writer) => {
       writer.write({
+        site: undefined,
+        store: undefined,
         customers: values.customers,
+        members: [],
       });
     });
   }
@@ -49,7 +52,7 @@ class Nectar {
     return { errors, values };
   }
 
-  validateFetchResponse(key: string, items: any[]) {
+  validateFetchResponse(key: string, items: any[]|object) {
     const validator = validators[key as keyof Validators];
 
     if (!validator) {
@@ -59,20 +62,29 @@ class Nectar {
     const errors: Error[] = [];
     const itemValues: any[] = [];
 
-    // Loop over every item (like a product, customer, order, etc)
-    items.forEach((item) => {
-      // Validate the object
-      const { error, value } = validator(item);
-      
-      if (error) {
-        errors.push(error);
-        return;
-      }
+    if (Array.isArray(items)) {
+      // Loop over every item (like a product, customer, order, etc)
+      items.forEach((item) => {
+        // Validate the object
+        const { error, value } = validator(item);
+        
+        if (error) {
+          errors.push(error);
+          return;
+        }
 
-      itemValues.push(value);
-    });
+        itemValues.push(value);
+      });
 
-    return { errors, itemValues };
+      return { errors, itemValues };
+    }
+
+    const { error, value } = validator(items);
+
+    return { 
+      errors: error ? [error] : [], 
+      itemValues: [value],
+    };
   }
 
   async fetch(): Promise<FetchResponses> {

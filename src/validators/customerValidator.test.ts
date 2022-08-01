@@ -1,10 +1,10 @@
-import MockReader from '../readers/mockReader';
+import StubReader from '../readers/stubReader';
 import customerValidator from './customerValidator';
 
 test('should validate succesfully', async () => {
-  const customers = await (new MockReader()).fetch('customers.json');
+  const customers = await (new StubReader()).fetch('customers.json');
 
-  if (!customers || !customers.length) {
+  if (!customers || !Array.isArray(customers)) {
     throw new Error('customers should not be null or empty');
   }
   
@@ -16,9 +16,9 @@ test('should validate succesfully', async () => {
 });
 
 test('should return errors', async () => {
-  const customers = await (new MockReader()).fetch('customers-invalid.json');
+  const customers = await (new StubReader()).fetch('customers-invalid.json');
 
-  if (!customers || !customers.length) {
+  if (!customers || !Array.isArray(customers)) {
     throw new Error('customers should not be null or empty');
   }
   

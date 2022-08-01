@@ -1,3 +1,6 @@
+import { Site } from './site';
+import { Store } from './store';
+import { Member } from './member';
 import { Customer } from './customer';
 
 export type WriterResponse = {
@@ -5,7 +8,10 @@ export type WriterResponse = {
 };
 
 export type WriterInput = {
-  customers: Customer[];
+  site?: Site,
+  store?: Store,
+  customers?: Customer[];
+  members?: Member[];
 };
 
 export interface Writer {

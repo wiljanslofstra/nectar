@@ -1,0 +1,27 @@
+[
+    {
+        "list_ids": ["123456"],
+        "email_address": "wiljanslofstra@gmail.com",
+        "status": "subscribed",
+        "language": "nl-NL",
+        "custom_fields": {
+            "FNAME": "Wiljan",
+            "LNAME": "Slofstra"
+        },
+        "tags": [
+            "tag-1"
+        ]
+    }, {
+        "list_ids": ["123456"],
+        "email_address": "wiljanslofstra2@gmail.com",
+        "status": "subscribed",
+        "language": "nl-NL",
+        "custom_fields": {
+            "FNAME": "Wiljan",
+            "LNAME": "Slofstra"
+        },
+        "tags": [
+            "tag-1"
+        ]
+    }
+]

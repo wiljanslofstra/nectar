@@ -3,7 +3,7 @@
  * Do not modify this file manually
  */
 
-export * from './customer';
-export * from './member';
-export * from './site';
-export * from './store';
+export interface Site {
+  domain: string;
+  id: string;
+}

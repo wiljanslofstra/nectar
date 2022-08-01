@@ -15,7 +15,11 @@ const schema = Joi.object({
     .required(),
   currency_code: Joi
     .string()
-    .length(3)
+    .allow(
+      // Source: https://mailchimp.com/help/pricing-for-international-non-us-and-other-currencies/
+      'USD', 'EUR', 'GBP', 'AUD', 'INR', 'NZD', 'BRL', 'DKK', 'SEK', 'SGD',
+      'ZAR', 'CHF', 'MXN', 'CAD', 'HKD', 'JPY',
+    )
     .default('EUR'),
 })
   .label('Store');

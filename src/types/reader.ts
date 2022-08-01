@@ -1,7 +1,7 @@
 export interface Reader {
-  fetch(path: string): Promise<any[]|null>;
+  fetch(path: string): Promise<any[]|object|null>;
 }
 
 export type FetchResponses = {
-  [key: string]: any[];
+  [key: string]: any[]|object;
 };

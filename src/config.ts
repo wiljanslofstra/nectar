@@ -1,10 +1,10 @@
 import Mailchimp from 'mailchimp-api-v3';
-import MockReader from './readers/mockReader';
+import StubReader from './readers/stubReader';
 import Config from './types/config';
 import MailchimpWriter from './writers/mailchimp';
 
 const config: Config = {
-  reader: new MockReader(),
+  reader: new StubReader(),
   readerPaths: {
     customers: 'customers.json',
   },

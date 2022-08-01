@@ -1,0 +1,19 @@
+[
+    {
+        "id": "123",
+        "first_name": "Wiljan",
+        "last_name": "Slofstra",
+        "company": "Company name",
+        "email_address": "wiljanslofstra@gmail.com",
+        "status": "subscribed",
+        "language": "nl-NL"
+    }, {
+        "id": "234",
+        "first_name": "Wiljan",
+        "last_name": "Slofstra",
+        "company": "Company name",
+        "email_address": "wiljanslofstra2@gmail.com",
+        "status": "subscribed",
+        "language": "nl-NL"
+    }
+]

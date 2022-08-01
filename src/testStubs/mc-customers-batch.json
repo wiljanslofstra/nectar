@@ -1,0 +1,18 @@
+[
+  {
+    "id": "123",
+    "email_address": "wiljanslofstra@gmail.com",
+    "opt_in_status": true,
+    "company": "string",
+    "first_name": "string",
+    "last_name": "string",
+    "orders_count": 4,
+    "total_spent": 100
+  }, {
+    "type": "https://mailchimp.com/developer/marketing/docs/errors/",
+    "title": "Resource Not Found",
+    "status": 404,
+    "detail": "The requested resource could not be found.",
+    "instance": "995c5cb0-3280-4a6e-808b-3b096d0bb219"
+  }
+]

@@ -1,21 +1,10 @@
 import * as Joi from 'joi';
 
 const schema = Joi.object({
-  id: Joi
-    .string()
-    .max(200)
+  list_ids: Joi
+    .array()
+    .items(Joi.string())
     .required(),
-  first_name: Joi
-    .string()
-    .max(200)
-    .required(),
-  last_name: Joi
-    .string()
-    .max(200)
-    .required(),
-  company: Joi
-    .string()
-    .max(200),
   email_address: Joi
     .string()
     .email()
@@ -25,15 +14,6 @@ const schema = Joi.object({
     .string()
     .allow('subscribed', 'unsubscribed', 'transactional')
     .required(),
-  address: Joi
-    .object({
-      address1: Joi.string().max(200),
-      address2: Joi.string().max(200),
-      city: Joi.string().max(200),
-      state: Joi.string().max(200),
-      postal_code: Joi.string().max(20),
-      country_code: Joi.string().max(2),
-    }),
   language: Joi
     .string()
     .allow(
@@ -44,7 +24,13 @@ const schema = Joi.object({
       'sk', 'sl', 'es', 'es_ES', 'sw', 'sv', 'ta', 'th', 'tr', 'uk', 'vi',
     )
     .required(),
+  custom_fields: Joi
+    .object()
+    .pattern(Joi.string(), Joi.alternatives().try(Joi.string(), Joi.number())),
+  tags: Joi
+    .array()
+    .items(Joi.string()),
 })
-  .label('Customer');
+  .label('Member');
 
 export default schema;
