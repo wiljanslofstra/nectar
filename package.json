@@ -3,13 +3,16 @@
   "name": "nectar",
   "main": "src/index.ts",
   "scripts": {
-    "start": "npm run copy-stubs && tsc",
-    "watch": "npm run copy-stubs && tsc --watch",
+    "start": "tsc",
+    "poststart": "npm run copy-stubs",
+    "build": "npm run start",
+    "prewatch": "npm run copy-stubs",
+    "watch": "tsc --watch",
     "test": "jest",
     "test-watch": "jest --watch",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "schemas-to-types": "ts-node ./schemasToTypes.ts",
-    "copy-stubs": "mkdir -p ./build/src/testStubs && cp -R ./src/testStubs/ ./build/src/testStubs/"
+    "copy-stubs": "mkdir -p ./build/src/testStubs/ && cp -R ./src/testStubs/. ./build/src/testStubs/"
   },
   "dependencies": {
     "joi": "^17.6",

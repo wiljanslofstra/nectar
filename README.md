@@ -12,11 +12,13 @@ npm run start
 ## Test
 
 ```bash
+npm install
+
 # Once
+npm run start
 npm run test
 
 # Watch
-npm install
 npm run watch
 npm run test-watch
 ```
