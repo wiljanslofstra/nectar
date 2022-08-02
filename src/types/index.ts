@@ -5,5 +5,6 @@
 
 export * from './customer';
 export * from './member';
+export * from './product';
 export * from './site';
 export * from './store';

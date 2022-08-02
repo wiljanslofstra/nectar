@@ -1,0 +1,11 @@
+{
+  "id": "product-id",
+  "store_id": "store-123",
+  "title": "My Product",
+  "variants": [
+    {
+      "id": "product-id",
+      "title": "My product variant"
+    }
+  ]
+}
