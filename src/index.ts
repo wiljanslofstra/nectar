@@ -2,9 +2,13 @@ import Config from './types/config';
 import { FetchResponses } from './types/reader';
 import { Validators } from './types/validator';
 import customerValidator from './validators/customerValidator';
+import memberValidator from './validators/memberValidator';
+import siteValidator from './validators/siteValidator';
 
 const validators: Validators = {
   customers: customerValidator,
+  members: memberValidator,
+  site: siteValidator,
 };
 
 class Nectar {

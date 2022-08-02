@@ -1,5 +1,5 @@
-- [ ] Connected sites (https://mailchimp.com/developer/marketing/api/connected-sites/list-connected-sites/)
-- [ ] Members
+- [x] Connected sites (https://mailchimp.com/developer/marketing/api/connected-sites/list-connected-sites/)
+- [x] Members
   - [ ] Sync tags (https://mailchimp.com/developer/marketing/api/list-member-tags/add-or-remove-member-tags/)
 
 ## E-commerce
@@ -22,4 +22,4 @@
   - PUT /ecommerce/stores/{store_id}/customers/{customer_id}
     - store_id => required
     - customer_id => required
-  - 
+  -

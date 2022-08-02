@@ -42,9 +42,31 @@ export default class MailchimpWriter {
     };
   }
 
-  // eslint-disable-next-line class-methods-use-this
   async writeSite(site: Site) {
-    console.log(site);
+    let response = null;
+
+    try {
+      // Try fetching the connected site
+      response = await this.mailchimp.get(`/connected-sites/${site.id}`);
+    } catch (getError) {
+      try {
+        // Fetching failed, most likely because it doesn't exist, create site.
+        response = await this.mailchimp.post('/connected-sites', {
+          foreign_id: site.id,
+          domain: site.domain,
+        });
+      } catch (postError) {
+        return {
+          errors: [postError],
+          response: [response],
+        };
+      }
+    }
+
+    return {
+      errors: [],
+      response: [response],
+    };
   }
 
   async writeMembers(members: Member[]) {

@@ -7,6 +7,8 @@ const config: Config = {
   reader: new StubReader(),
   readerPaths: {
     customers: 'customers.json',
+    members: 'members.json',
+    site: 'site.json',
   },
   writers: [
     new MailchimpWriter(new Mailchimp('key123')),
