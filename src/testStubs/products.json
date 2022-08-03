@@ -1,0 +1,23 @@
+[
+  {
+    "id": "product-id",
+    "store_id": "store-123",
+    "title": "My Product",
+    "variants": [
+      {
+        "id": "product-id",
+        "title": "My product variant"
+      }
+    ]
+  }, {
+    "id": "product-id-2",
+    "store_id": "store-123",
+    "title": "My Product #2",
+    "variants": [
+      {
+        "id": "product-id-2",
+        "title": "My product variant"
+      }
+    ]
+  }
+]

@@ -3,12 +3,16 @@ import { FetchResponses } from './types/reader';
 import { Validators } from './types/validator';
 import customerValidator from './validators/customerValidator';
 import memberValidator from './validators/memberValidator';
+import productValidator from './validators/productValidator';
 import siteValidator from './validators/siteValidator';
+import storeValidator from './validators/storeValidator';
 
 const validators: Validators = {
   customers: customerValidator,
   members: memberValidator,
   site: siteValidator,
+  store: storeValidator,
+  products: productValidator,
 };
 
 class Nectar {

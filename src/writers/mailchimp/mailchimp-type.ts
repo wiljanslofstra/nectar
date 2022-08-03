@@ -32,7 +32,7 @@ export default interface Mailchimp {
 type Path = string;
 type Options = {};
 type PathOrOptions = Path | Options;
-type Query = string;
+type Query = string | Options;
 type Body = {};
 
 export type MailchimpMethodReturn = {

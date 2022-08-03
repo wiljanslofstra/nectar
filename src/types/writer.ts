@@ -1,3 +1,4 @@
+import { Product } from './product';
 import { Site } from './site';
 import { Store } from './store';
 import { Member } from './member';
@@ -12,6 +13,7 @@ export type WriterInput = {
   store?: Store,
   customers?: Customer[];
   members?: Member[];
+  products?: Product[];
 };
 
 export interface Writer {

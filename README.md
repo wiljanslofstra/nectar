@@ -19,7 +19,7 @@ Some of the APIs are not yet implemented. Other APIs might not be available for 
 | Site      | ✅         | ❌       | ❌              |
 | Customers | ✅         | ❌       | ❌              |
 | Store     | ✅         | ❌       | ❌              |
-| Products  | ❌         | ❌       | ❌              |
+| Products  | ✅         | ❌       | ❌              |
 | Orders    | ❌         | ❌       | ❌              |
 | Carts     | ❌         | ❌       | ❌              |
 

@@ -27,7 +27,11 @@ export default async function writeCustomers(
   const res = await mailchimp.batch(updates);
 
   if (!Array.isArray(res)) {
-    return { errors: [] };
+    return {
+      errors: [
+        new Error('Batch should\'ve returned an array'),
+      ],
+    };
   }
 
   return {
