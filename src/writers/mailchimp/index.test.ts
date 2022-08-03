@@ -1,3 +1,4 @@
+import { Store } from '../../types/store';
 import { Site } from '../../types/site';
 import MailchimpWriter from '.';
 import StubReader from '../../readers/stubReader';
@@ -58,7 +59,7 @@ test('should handle members', async () => {
   expect(res.response).toHaveLength(2);
 });
 
-it('should only get site when exists', async () => {
+test('should only get site when exists', async () => {
   const inputSite = await (new StubReader()).fetch('site.json') as Site;
   const mailchimpConnectedSiteGet = await (new StubReader()).fetch('mc-connected-site-get.json');
   const mailchimpConnectedSitePost = await (new StubReader()).fetch('mc-connected-site-post.json');
@@ -91,7 +92,7 @@ it('should only get site when exists', async () => {
   expect(mailchimp.post).toHaveBeenCalledTimes(0);
 });
 
-it('should only get site when exists', async () => {
+test('should create site if not exists', async () => {
   const inputSite = await (new StubReader()).fetch('site.json') as Site;
   const mailchimpConnectedSitePost = await (new StubReader()).fetch('mc-connected-site-post.json');
 
@@ -116,6 +117,71 @@ it('should only get site when exists', async () => {
   };
 
   const res = await (new MailchimpWriter(mailchimp)).writeSite(inputSite);
+
+  expect(res.errors).toHaveLength(0);
+  expect(res.response).toHaveLength(1);
+  expect(mailchimp.get).toHaveBeenCalled();
+  expect(mailchimp.post).toHaveBeenCalled();
+});
+
+test('should only get store when exists', async () => {
+  const inputStore = await (new StubReader()).fetch('store.json') as Store;
+  const mailchimpStoreGet = await (new StubReader()).fetch('mc-store-get.json');
+  const mailchimpStorePost = await (new StubReader()).fetch('mc-store-post.json');
+
+  if (!inputStore || Array.isArray(inputStore)) {
+    throw new Error('store should not be null or empty');
+  }
+
+  const mailchimp = {
+    ...mailchimpMock,
+    get: jest.fn()
+      .mockImplementationOnce(() => {
+        return new Promise((resolve) => {
+          resolve(mailchimpStoreGet);
+        });
+      }),
+    post: jest.fn()
+      .mockImplementationOnce(() => {
+        return new Promise((resolve) => {
+          resolve(mailchimpStorePost);
+        });
+      }),
+  };
+
+  const res = await (new MailchimpWriter(mailchimp)).writeStore(inputStore);
+
+  expect(res.errors).toHaveLength(0);
+  expect(res.response).toHaveLength(1);
+  expect(mailchimp.get).toHaveBeenCalled();
+  expect(mailchimp.post).toHaveBeenCalledTimes(0);
+});
+
+test('should create store if not exists', async () => {
+  const inputStore = await (new StubReader()).fetch('store.json') as Store;
+  const mailchimpStorePost = await (new StubReader()).fetch('mc-store-post.json');
+
+  if (!inputStore || Array.isArray(inputStore)) {
+    throw new Error('store should not be null or empty');
+  }
+
+  const mailchimp = {
+    ...mailchimpMock,
+    get: jest.fn()
+      .mockImplementationOnce(() => {
+        return new Promise((resolve, reject) => {
+          reject(new Error('Not found'));
+        });
+      }),
+    post: jest.fn()
+      .mockImplementationOnce(() => {
+        return new Promise((resolve) => {
+          resolve(mailchimpStorePost);
+        });
+      }),
+  };
+
+  const res = await (new MailchimpWriter(mailchimp)).writeStore(inputStore);
 
   expect(res.errors).toHaveLength(0);
   expect(res.response).toHaveLength(1);

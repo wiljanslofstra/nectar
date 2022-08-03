@@ -6,6 +6,11 @@ import { Customer } from '../../types/customer';
 import { WriterInput, WriterResponse } from '../../types/writer';
 import MailchimpType from './mailchimp-type';
 
+type MailchimpMethodReturn = {
+  response?: object[];
+  errors: Error[];
+};
+
 export default class MailchimpWriter {
   mailchimp: MailchimpType;
 
@@ -42,7 +47,7 @@ export default class MailchimpWriter {
     };
   }
 
-  async writeSite(site: Site) {
+  async writeSite(site: Site): Promise<MailchimpMethodReturn> {
     let response = null;
 
     try {
@@ -57,7 +62,7 @@ export default class MailchimpWriter {
         });
       } catch (postError) {
         return {
-          errors: [postError],
+          errors: [postError as Error],
           response: [response],
         };
       }
@@ -69,7 +74,7 @@ export default class MailchimpWriter {
     };
   }
 
-  async writeMembers(members: Member[]) {
+  async writeMembers(members: Member[]): Promise<MailchimpMethodReturn> {
     const updates: object[] = [];
 
     members.forEach((member) => {
@@ -102,11 +107,36 @@ export default class MailchimpWriter {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  async writeStore(store: Store) {
-    console.log(store);
+  async writeStore(store: Store): Promise<MailchimpMethodReturn> {
+    let response = null;
+
+    try {
+      // Try fetching the store
+      response = await this.mailchimp.get(`/ecommerce/stores/${store.id}`);
+    } catch (getError) {
+      try {
+        // Fetching failed, most likely because it doesn't exist, create store.
+        response = await this.mailchimp.post('/ecommerce/stores', {
+          id: store.id,
+          currency_code: store.currency_code,
+          list_id: store.list_id,
+          name: store.name,
+        });
+      } catch (postError) {
+        return {
+          errors: [postError as Error],
+          response: [response],
+        };
+      }
+    }
+
+    return {
+      errors: [],
+      response: [response],
+    };
   }
 
-  async writeCustomers(storeId: string, customers: Customer[]) {
+  async writeCustomers(storeId: string, customers: Customer[]): Promise<MailchimpMethodReturn> {
     const updates = customers.map((customer) => {
       const customerId = customer.id;
 
