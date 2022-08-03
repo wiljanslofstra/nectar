@@ -34,3 +34,8 @@ type Options = {};
 type PathOrOptions = Path | Options;
 type Query = string;
 type Body = {};
+
+export type MailchimpMethodReturn = {
+  response?: object[];
+  errors: Error[];
+};
