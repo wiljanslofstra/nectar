@@ -1,34 +1,21 @@
 import { Store } from '../../types/store';
 import { Site } from '../../types/site';
+import { Customer } from '../../types/customer';
+import { Member } from '../../types/member';
 import MailchimpWriter from '.';
-import StubReader from '../../readers/stubReader';
-import Mailchimp from './mailchimp-type';
-
-const mailchimpMock: Mailchimp = {
-  get: async () => {},
-  post: async () => {},
-  put: async () => {},
-  patch: async () => {},
-  delete: async () => {},
-  batch: async () => {},
-};
+import { mailchimpMock, readStubArray, readStubObject } from './mailchimp-test-helpers';
 
 test('should handle customers', async () => {
-  const inputCustomers = await (new StubReader()).fetch('customers.json');
-  const mailchimpCustomersBatchResponse = await (new StubReader()).fetch('mc-customers-batch.json');
+  const inputCustomers = await readStubArray('customers.json') as Customer[];
+  const mailchimpCustomersBatchResponse = await readStubArray('mc-customers-batch.json');
 
-  if (!inputCustomers || !Array.isArray(inputCustomers)) {
-    throw new Error('customers should not be null or empty');
-  }
-
-  const mailchimp = {
-    ...mailchimpMock,
+  const mailchimp = mailchimpMock({
     batch: jest.fn(() => {
       return new Promise((resolve) => {
         resolve(mailchimpCustomersBatchResponse);
       });
     }),
-  };
+  });
 
   const res = await (new MailchimpWriter(mailchimp)).writeCustomers('store123', inputCustomers);
 
@@ -37,21 +24,16 @@ test('should handle customers', async () => {
 });
 
 test('should handle members', async () => {
-  const inputMembers = await (new StubReader()).fetch('members.json');
-  const mailchimpMembersBatchResponse = await (new StubReader()).fetch('mc-members-batch.json');
+  const inputMembers = await readStubArray('members.json') as Member[];
+  const mailchimpMembersBatchResponse = await readStubArray('mc-members-batch.json');
 
-  if (!inputMembers || !Array.isArray(inputMembers)) {
-    throw new Error('members should not be null or empty');
-  }
-
-  const mailchimp = {
-    ...mailchimpMock,
+  const mailchimp = mailchimpMock({
     batch: jest.fn(() => {
       return new Promise((resolve) => {
         resolve(mailchimpMembersBatchResponse);
       });
     }),
-  };
+  });
 
   const res = await (new MailchimpWriter(mailchimp)).writeMembers(inputMembers);
 
@@ -60,16 +42,11 @@ test('should handle members', async () => {
 });
 
 test('should only get site when exists', async () => {
-  const inputSite = await (new StubReader()).fetch('site.json') as Site;
-  const mailchimpConnectedSiteGet = await (new StubReader()).fetch('mc-connected-site-get.json');
-  const mailchimpConnectedSitePost = await (new StubReader()).fetch('mc-connected-site-post.json');
+  const inputSite = await readStubObject('site.json') as Site;
+  const mailchimpConnectedSiteGet = await readStubObject('mc-connected-site-get.json');
+  const mailchimpConnectedSitePost = await readStubObject('mc-connected-site-post.json');
 
-  if (!inputSite || Array.isArray(inputSite)) {
-    throw new Error('site should not be null or empty');
-  }
-
-  const mailchimp = {
-    ...mailchimpMock,
+  const mailchimp = mailchimpMock({
     get: jest.fn()
       .mockImplementationOnce(() => {
         return new Promise((resolve) => {
@@ -82,7 +59,7 @@ test('should only get site when exists', async () => {
           resolve(mailchimpConnectedSitePost);
         });
       }),
-  };
+  });
 
   const res = await (new MailchimpWriter(mailchimp)).writeSite(inputSite);
 
@@ -93,15 +70,10 @@ test('should only get site when exists', async () => {
 });
 
 test('should create site if not exists', async () => {
-  const inputSite = await (new StubReader()).fetch('site.json') as Site;
-  const mailchimpConnectedSitePost = await (new StubReader()).fetch('mc-connected-site-post.json');
+  const inputSite = await readStubObject('site.json') as Site;
+  const mailchimpConnectedSitePost = await readStubObject('mc-connected-site-post.json');
 
-  if (!inputSite || Array.isArray(inputSite)) {
-    throw new Error('site should not be null or empty');
-  }
-
-  const mailchimp = {
-    ...mailchimpMock,
+  const mailchimp = mailchimpMock({
     get: jest.fn()
       .mockImplementationOnce(() => {
         return new Promise((resolve, reject) => {
@@ -114,7 +86,7 @@ test('should create site if not exists', async () => {
           resolve(mailchimpConnectedSitePost);
         });
       }),
-  };
+  });
 
   const res = await (new MailchimpWriter(mailchimp)).writeSite(inputSite);
 
@@ -125,16 +97,11 @@ test('should create site if not exists', async () => {
 });
 
 test('should only get store when exists', async () => {
-  const inputStore = await (new StubReader()).fetch('store.json') as Store;
-  const mailchimpStoreGet = await (new StubReader()).fetch('mc-store-get.json');
-  const mailchimpStorePost = await (new StubReader()).fetch('mc-store-post.json');
+  const inputStore = await readStubObject('store.json') as Store;
+  const mailchimpStoreGet = await readStubObject('mc-store-get.json');
+  const mailchimpStorePost = await readStubObject('mc-store-post.json');
 
-  if (!inputStore || Array.isArray(inputStore)) {
-    throw new Error('store should not be null or empty');
-  }
-
-  const mailchimp = {
-    ...mailchimpMock,
+  const mailchimp = mailchimpMock({
     get: jest.fn()
       .mockImplementationOnce(() => {
         return new Promise((resolve) => {
@@ -147,7 +114,7 @@ test('should only get store when exists', async () => {
           resolve(mailchimpStorePost);
         });
       }),
-  };
+  });
 
   const res = await (new MailchimpWriter(mailchimp)).writeStore(inputStore);
 
@@ -158,15 +125,10 @@ test('should only get store when exists', async () => {
 });
 
 test('should create store if not exists', async () => {
-  const inputStore = await (new StubReader()).fetch('store.json') as Store;
-  const mailchimpStorePost = await (new StubReader()).fetch('mc-store-post.json');
+  const inputStore = await readStubObject('store.json') as Store;
+  const mailchimpStorePost = await readStubObject('mc-store-post.json');
 
-  if (!inputStore || Array.isArray(inputStore)) {
-    throw new Error('store should not be null or empty');
-  }
-
-  const mailchimp = {
-    ...mailchimpMock,
+  const mailchimp = mailchimpMock({
     get: jest.fn()
       .mockImplementationOnce(() => {
         return new Promise((resolve, reject) => {
@@ -179,7 +141,7 @@ test('should create store if not exists', async () => {
           resolve(mailchimpStorePost);
         });
       }),
-  };
+  });
 
   const res = await (new MailchimpWriter(mailchimp)).writeStore(inputStore);
 
