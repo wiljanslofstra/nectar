@@ -1,3 +1,4 @@
+import bunyan from 'bunyan';
 import { Product } from './product';
 import { Site } from './site';
 import { Store } from './store';
@@ -18,4 +19,5 @@ export type WriterInput = {
 
 export interface Writer {
   write(input: WriterInput): WriterResponse;
+  attachLogger(logger: bunyan): void;
 }

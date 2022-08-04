@@ -6,12 +6,14 @@ import MailchimpWriter from './writers/mailchimp';
 const config: Config = {
   reader: new StubReader(),
   readerPaths: {
-    customers: 'customers.json',
     members: 'members.json',
     site: 'site.json',
+    store: 'store.json',
+    customers: 'customers.json',
+    products: 'products.json',
   },
   writers: [
-    new MailchimpWriter(new Mailchimp('key123')),
+    new MailchimpWriter(new Mailchimp(process.env.MAILCHIMP_KEY || 'test123')),
   ],
 };
 

@@ -1,34 +1,79 @@
 import Mailchimp, { MailchimpMethodReturn } from '../mailchimp-type';
 import { Store } from '../../../types/store';
 
+const getStore = async (mailchimp: Mailchimp, store: Store): Promise<Array<Error | any>> => {
+  try {
+    const response = await mailchimp.get(`/ecommerce/stores/${store.id}`);
+    return [null, response];
+  } catch (err) {
+    return [err];
+  }
+};
+
+const updateStore = async (
+  mailchimp: Mailchimp,
+  store: Store,
+  body: {},
+): Promise<Array<Error | any>> => {
+  try {
+    const response = await mailchimp.patch(`/ecommerce/stores/${store.id}`, body);
+    return [null, response];
+  } catch (err) {
+    return [err];
+  }
+};
+
+const createStore = async (
+  mailchimp: Mailchimp,
+  store: Store,
+  body: {},
+): Promise<Array<Error | any>> => {
+  try {
+    const response = await mailchimp.post('/ecommerce/stores', body);
+    return [null, response];
+  } catch (err) {
+    return [err];
+  }
+};
+
 export default async function writeStore(
   mailchimp: Mailchimp,
   store: Store,
 ): Promise<MailchimpMethodReturn> {
-  let response = null;
+  // Fetch the existing store.
+  const [err] = await getStore(mailchimp, store);
 
-  try {
-    // Try fetching the store
-    response = await mailchimp.get(`/ecommerce/stores/${store.id}`);
-  } catch (getError) {
-    try {
-      // Fetching failed, most likely because it doesn't exist, create store.
-      response = await mailchimp.post('/ecommerce/stores', {
-        id: store.id,
-        currency_code: store.currency_code,
-        list_id: store.list_id,
-        name: store.name,
-      });
-    } catch (postError) {
-      return {
-        errors: [postError as Error],
-        response: [response],
-      };
-    }
+  const body = {
+    id: store.id,
+    list_id: store.list_id,
+    name: store.name,
+    address: store.address || {},
+    currency_code: store.currency_code,
+    domain: store.domain,
+    email_address: store.email_address,
+    money_format: store.money_format,
+    phone: store.phone,
+    platform: store.platform,
+    primary_locale: store.primary_locale,
+    timezone: store.timezone,
+  };
+
+  // If the existing store did return with an error, it probably
+  // means it doesnt exist yet. So we create one.
+  if (err) {
+    const [createErr, createResponse] = await createStore(mailchimp, store, body);
+
+    return {
+      errors: createErr ? [createErr as Error] : [],
+      response: [createResponse],
+    };
   }
 
+  // Update existing store.
+  const [updateErr, updateResponse] = await updateStore(mailchimp, store, body);
+
   return {
-    errors: [],
-    response: [response],
+    errors: updateErr ? [updateErr as Error] : [],
+    response: [updateResponse],
   };
 }

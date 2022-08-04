@@ -1,3 +1,4 @@
+import bunyan from 'bunyan';
 import Config from './types/config';
 import { FetchResponses } from './types/reader';
 import { Validators } from './types/validator';
@@ -18,8 +19,27 @@ const validators: Validators = {
 class Nectar {
   config: Config;
 
+  log: bunyan;
+
   constructor(config: Config) {
     this.config = config;
+    this.log = bunyan.createLogger({
+      name: 'nectar',
+      streams: [
+        {
+          level: 'info',
+          stream: process.stdout,
+        },
+        {
+          level: 'info',
+          path: 'nectar-info.log',
+        },
+      ],
+    });
+
+    this.config.writers.forEach((writer) => {
+      writer.attachLogger(this.log);
+    });
   }
 
   async run() {
@@ -32,10 +52,11 @@ class Nectar {
 
     this.config.writers.forEach((writer) => {
       writer.write({
-        site: undefined,
-        store: undefined,
+        site: values.site && values.site.length ? values.site[0] : null,
+        store: values.store && values.store.length ? values.store[0] : null,
         customers: values.customers,
-        members: [],
+        members: values.members,
+        products: values.products,
       });
     });
   }

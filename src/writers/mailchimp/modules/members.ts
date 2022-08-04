@@ -17,7 +17,9 @@ export default async function writeMembers(
         path: `/lists/${listId}/members/${subscriberHash}`,
         body: {
           email_address: member.email_address,
-          opt_in_status: member.status === 'subscribed',
+          status: member.status,
+          merge_fields: member.custom_fields || {},
+          language: member.language,
         },
       });
     });

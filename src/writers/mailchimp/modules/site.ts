@@ -1,32 +1,68 @@
 import Mailchimp, { MailchimpMethodReturn } from '../mailchimp-type';
 import { Site } from '../../../types/site';
 
+const getSite = async (mailchimp: Mailchimp, site: Site): Promise<Array<Error | any>> => {
+  try {
+    const response = await mailchimp.get(`/connected-sites/${site.id}`);
+    return [null, response];
+  } catch (err) {
+    return [err];
+  }
+};
+
+const updateSite = async (
+  mailchimp: Mailchimp,
+  site: Site,
+  body: any,
+): Promise<Array<Error | any>> => {
+  try {
+    const response = await mailchimp.patch(`/connected-sites/${site.id}`, body);
+    return [null, response];
+  } catch (err) {
+    return [err];
+  }
+};
+
+const createSite = async (
+  mailchimp: Mailchimp,
+  site: Site,
+  body: any,
+): Promise<Array<Error | any>> => {
+  try {
+    const response = await mailchimp.post('/connected-sites', body);
+    return [null, response];
+  } catch (err) {
+    return [err];
+  }
+};
+
 export default async function writeSite(
   mailchimp: Mailchimp,
   site: Site,
 ): Promise<MailchimpMethodReturn> {
-  let response = null;
+  const [err] = await getSite(mailchimp, site);
 
-  try {
-    // Try fetching the connected site
-    response = await mailchimp.get(`/connected-sites/${site.id}`);
-  } catch (getError) {
-    try {
-      // Fetching failed, most likely because it doesn't exist, create site.
-      response = await mailchimp.post('/connected-sites', {
-        foreign_id: site.id,
-        domain: site.domain,
-      });
-    } catch (postError) {
-      return {
-        errors: [postError as Error],
-        response: [response],
-      };
-    }
+  const body = {
+    id: site.id,
+    domain: site.domain,
+  };
+
+  // If the existing site did return with an error, it probably
+  // means it doesnt exist yet. So we create one.
+  if (err) {
+    const [createErr, createResponse] = await createSite(mailchimp, site, body);
+
+    return {
+      errors: createErr ? [createErr as Error] : [],
+      response: [createResponse],
+    };
   }
 
+  // Update existing site.
+  const [updateErr, updateResponse] = await updateSite(mailchimp, site, body);
+
   return {
-    errors: [],
-    response: [response],
+    errors: updateErr ? [updateErr as Error] : [],
+    response: [updateResponse],
   };
 }

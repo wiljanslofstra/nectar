@@ -4,8 +4,25 @@
  */
 
 export interface Store {
+  address?: {
+    address1?: string;
+    address2?: string;
+    city?: string;
+    country_code?: string;
+    latitude?: number;
+    longitude?: number;
+    postal_code?: string;
+    state?: string;
+  };
   currency_code?: 'USD' | 'EUR' | 'GBP' | 'AUD' | 'INR' | 'NZD' | 'BRL' | 'DKK' | 'SEK' | 'SGD' | 'ZAR' | 'CHF' | 'MXN' | 'CAD' | 'HKD' | 'JPY';
+  domain?: string;
+  email_address?: string;
   id: string;
   list_id: string;
+  money_format?: string;
   name: string;
+  phone?: string;
+  platform?: string;
+  primary_locale?: 'en' | 'ar' | 'af' | 'be' | 'bg' | 'ca' | 'zh' | 'hr' | 'cs' | 'da' | 'nl' | 'et' | 'fa' | 'fi' | 'fr' | 'fr_CA' | 'de' | 'el' | 'he' | 'hi' | 'hu' | 'is' | 'id' | 'ga' | 'it' | 'ja' | 'km' | 'ko' | 'lv' | 'lt' | 'mt' | 'ms' | 'mk' | 'no' | 'pl' | 'pt' | 'pt_PT' | 'ro' | 'ru' | 'sr' | 'sk' | 'sl' | 'es' | 'es_ES' | 'sw' | 'sv' | 'ta' | 'th' | 'tr' | 'uk' | 'vi';
+  timezone?: string;
 }

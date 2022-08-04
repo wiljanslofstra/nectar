@@ -16,16 +16,21 @@ export async function recursiveFetch(
       count,
       offset,
     };
-    // eslint-disable-next-line no-await-in-loop
-    const res = await mailchimp.get(url, query);
 
-    const currentTotal = res[key].length + offset;
+    try {
+      // eslint-disable-next-line no-await-in-loop
+      const res = await mailchimp.get(url, query);
 
-    res[key].forEach((customer: object) => {
-      list.push(customer);
-    });
+      const currentTotal = res[key].length + offset;
 
-    if (currentTotal <= res.total_items) {
+      res[key].forEach((customer: object) => {
+        list.push(customer);
+      });
+
+      if (currentTotal <= res.total_items) {
+        moreAvailable = false;
+      }
+    } catch (err) {
       moreAvailable = false;
     }
   }

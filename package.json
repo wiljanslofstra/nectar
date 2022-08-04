@@ -15,11 +15,13 @@
     "copy-stubs": "mkdir -p ./build/src/testStubs/ && cp -R ./src/testStubs/. ./build/src/testStubs/"
   },
   "dependencies": {
+    "bunyan": "^1.8.15",
     "joi": "^17.6",
     "joi-to-typescript": "^4.0.5",
     "mailchimp-api-v3": "^1.15.0"
   },
   "devDependencies": {
+    "@types/bunyan": "^1.8.8",
     "@types/jest": "^28.1.6",
     "@types/node": "^18.6.2",
     "@typescript-eslint/eslint-plugin": "^5.31.0",

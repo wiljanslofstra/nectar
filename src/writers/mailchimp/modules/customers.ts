@@ -19,7 +19,7 @@ export default async function writeCustomers(
         last_name: customer.last_name,
         company: customer.company,
         opt_in_status: customer.status === 'subscribed',
-        address: customer.address || null,
+        address: customer.address || {},
       },
     };
   });

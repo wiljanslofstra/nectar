@@ -1,6 +1,6 @@
 [
     {
-        "list_ids": ["123456"],
+        "list_ids": ["1305abfa2f"],
         "email_address": "wiljanslofstra@gmail.com",
         "status": "subscribed",
         "language": "nl-NL",
@@ -12,7 +12,7 @@
             "tag-1"
         ]
     }, {
-        "list_ids": ["123456"],
+        "list_ids": ["1305abfa2f"],
         "email_address": "wiljanslofstra2@gmail.com",
         "status": "subscribed",
         "language": "nl-NL",

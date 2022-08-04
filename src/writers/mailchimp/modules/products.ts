@@ -45,7 +45,7 @@ export default async function writeProducts(
     }
 
     return {
-      method: 'PUT',
+      method: 'PATCH',
       path: `/ecommerce/stores/${storeId}/products/${productId}`,
       body,
     };
