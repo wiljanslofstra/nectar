@@ -11,6 +11,7 @@ const config: Config = {
     store: 'store.json',
     customers: 'customers.json',
     products: 'products.json',
+    orders: 'orders.json',
   },
   writers: [
     new MailchimpWriter(new Mailchimp(process.env.MAILCHIMP_KEY || 'test123')),

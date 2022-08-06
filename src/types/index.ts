@@ -7,5 +7,6 @@ export * from './customer';
 export * from './member';
 export * from './order';
 export * from './product';
+export * from './server-sync';
 export * from './site';
 export * from './store';

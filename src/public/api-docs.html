@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API docs - Nectar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" integrity="sha512-gU7kztaQEl7SHJyraPfZLQCNnrKdaQi5ndOyt4L4UPL/FHDd/uB9Je6KDARIqwnNNE27hnqoWLBq+Kpe4iHfeQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/json.min.js" integrity="sha512-nQCa7GcNl4QHBjXtYDFUh60Kl1Ij0Rri2czcHNn0nrDXQzQNdUuLsMQu7XGEI6HO2L+EL9s+dJ8flwn2ITQwvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github.min.css" integrity="sha512-0aPQyyeZrWj9sCA46UlmWgKOP0mUipLQ6OZXu8l4IcAmD2u31EPEy9VcIMvl7SoAaKe8bLXZhYoMaE/in+gcgA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <main class="max-w-7xl mx-auto px-6 py-10">
+      <h1 class="text-3xl font-bold mb-10">
+        Nectar API documentation
+      </h1>
+
+      <section>
+        <h2 class="text-xl font-mono px-6 py-4 bg-gray-100 rounded-xl mb-6">
+          <span class="text-blue-700">POST</span>
+          /sync
+        </h2>
+
+        <h3 class="text-lg font-bold mb-4">
+          Body JSON (example)
+        </h3>
+
+        <pre class="border-l-4 pl-6"><code class="language-json">{
+  "paths": {
+    "members": "https://www.example.com/feeds/members.json",
+    "site": "https://www.example.com/feeds/site.json",
+    "store": "https://www.example.com/feeds/store.json",
+    "customers": "https://www.example.com/feeds/customers.json",
+    "products": "https://www.example.com/feeds/products.json",
+    "orders": "https://www.example.com/feeds/orders.json"
+  },
+  "writers": {
+    "mailchimp": {
+      "key": "12345678987654321123456789876543-us14"
+    }
+  }
+}</code></pre>
+      </section>
+    </main>
+
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>
