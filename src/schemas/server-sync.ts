@@ -1,16 +1,20 @@
 import * as Joi from 'joi';
 
 const schema = Joi.object({
+  reader: Joi.string().default('json'),
   paths: Joi.object({
-    members: Joi.string().uri(),
-    site: Joi.string().uri(),
-    store: Joi.string().uri(),
-    customers: Joi.string().uri(),
-    products: Joi.string().uri(),
-    orders: Joi.string().uri(),
+    members: Joi.string().uri({ allowRelative: true }),
+    site: Joi.string().uri({ allowRelative: true }),
+    store: Joi.string().uri({ allowRelative: true }),
+    customers: Joi.string().uri({ allowRelative: true }),
+    products: Joi.string().uri({ allowRelative: true }),
+    orders: Joi.string().uri({ allowRelative: true }),
   }).required(),
   writers: Joi.object({
     mailchimp: {
+      key: Joi.string(),
+    },
+    fake: {
       key: Joi.string(),
     },
   }).required(),

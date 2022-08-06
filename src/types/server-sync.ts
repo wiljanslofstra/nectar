@@ -12,7 +12,11 @@ export interface ServerSync {
     site?: string;
     store?: string;
   };
+  reader?: string;
   writers: {
+    fake?: {
+      key?: string;
+    };
     mailchimp?: {
       key?: string;
     };

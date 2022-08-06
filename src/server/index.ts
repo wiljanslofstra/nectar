@@ -4,6 +4,8 @@ import routes from './routes';
 export default function server(listen = true) {
   const app = express();
 
+  app.use(express.json());
+
   routes(app);
 
   if (listen) {

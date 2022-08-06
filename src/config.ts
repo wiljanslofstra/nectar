@@ -1,7 +1,5 @@
-import Mailchimp from 'mailchimp-api-v3';
 import StubReader from './readers/stubReader';
 import Config from './types/config';
-import MailchimpWriter from './writers/mailchimp';
 
 const config: Config = {
   reader: new StubReader(),
@@ -13,9 +11,11 @@ const config: Config = {
     products: 'products.json',
     orders: 'orders.json',
   },
-  writers: [
-    new MailchimpWriter(new Mailchimp(process.env.MAILCHIMP_KEY || 'test123')),
-  ],
+  writers: {
+    mailchimp: {
+      key: process.env.MAILCHIMP_KEY || 'test123',
+    },
+  },
 };
 
 export default config;

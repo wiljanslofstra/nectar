@@ -1,13 +1,14 @@
 import bunyan from 'bunyan';
-import { WriterInput, WriterResponse } from '../../types/writer';
+import { Writer, WriterInput, WriterResponse } from '../../types/writer';
 import MailchimpType from './mailchimp-type';
 import writeSite from './modules/site';
 import writeMembers from './modules/members';
 import writeStore from './modules/store';
 import writeCustomers from './modules/customers';
 import writeProducts from './modules/products';
+import writeOrders from './modules/orders';
 
-export default class MailchimpWriter {
+export default class MailchimpWriter implements Writer {
   mailchimp: MailchimpType;
 
   log?: bunyan;
@@ -21,25 +22,25 @@ export default class MailchimpWriter {
   }
 
   async write(input: WriterInput): Promise<WriterResponse> {
-    const errors: { [key: string]: Error[] } = {};
+    let errors: Error[] = [];
 
     if (input.site) {
       // Store site.
       const { errors: siteErrors } = await writeSite(this.mailchimp, input.site);
-      errors.site = siteErrors;
+      errors = errors.concat(errors, siteErrors);
     }
 
     if (input.members) {
       // Store members.
       const { errors: membersErrors } = await writeMembers(this.mailchimp, input.members);
-      errors.members = membersErrors;
+      errors = errors.concat(errors, membersErrors);
     }
 
     // Store is required to send customers and other e-commerce data.
     if (input.store) {
       // Store store.
       const { errors: storeErrors } = await writeStore(this.mailchimp, input.store);
-      errors.store = storeErrors;
+      errors = errors.concat(errors, storeErrors);
 
       if (storeErrors.length === 0) {
         if (input.customers) {
@@ -49,7 +50,7 @@ export default class MailchimpWriter {
             input.store.id,
             input.customers,
           );
-          errors.customers = customersErrors;
+          errors = errors.concat(errors, customersErrors);
         }
 
         if (input.products) {
@@ -59,26 +60,25 @@ export default class MailchimpWriter {
             input.store.id,
             input.products,
           );
-          errors.products = productsErrors;
+          errors = errors.concat(errors, productsErrors);
         }
 
-        // Write orders
-
-        // Write carts
-      }
-    }
-
-    if (Object.keys(errors).length) {
-      // eslint-disable-next-line no-restricted-syntax
-      for (const [, itemErrors] of Object.entries(errors)) {
-        if (itemErrors.length) {
-          this.log?.error(itemErrors);
+        if (input.orders) {
+          // Store products.
+          const { errors: ordersErrors } = await writeOrders(
+            this.mailchimp,
+            input.store.id,
+            input.orders,
+          );
+          errors = errors.concat(errors, ordersErrors);
         }
+
+        // TODO: Write carts
       }
     }
 
     return {
-      //
+      errors,
     };
   }
 }

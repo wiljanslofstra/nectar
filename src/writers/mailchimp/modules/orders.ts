@@ -45,13 +45,13 @@ function orderToBody(order: Order) {
   };
 }
 
-export default async function writeProducts(
+export default async function writeOrders(
   mailchimp: Mailchimp,
   storeId: string,
   orders: Order[],
 ): Promise<MailchimpMethodReturn> {
   const existingOrders = await recursiveFetch(mailchimp, `/ecommerce/stores/${storeId}/orders`, 'orders');
-  const existingOrderIds = existingOrders.map((product: any) => product.id);
+  const existingOrderIds = existingOrders.map((order: any) => order.id);
 
   const updates = orders.map((order) => {
     const orderId = order.id;
