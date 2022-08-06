@@ -1,0 +1,35 @@
+[
+  {
+    "id": "order-id-1",
+    "customer": {
+      "id": "123"
+    },
+    "currency_code": "EUR",
+    "order_total": 123,
+    "lines": [
+      {
+        "id": "1",
+        "product_id": "product-id",
+        "product_variant_id": "product-id",
+        "quantity": 1,
+        "price": 123
+      }
+    ]
+  }, {
+    "id": "order-id-2",
+    "customer": {
+      "id": "234"
+    },
+    "currency_code": "EUR",
+    "order_total": 234,
+    "lines": [
+      {
+        "id": "1",
+        "product_id": "product-id-2",
+        "product_variant_id": "product-id-2",
+        "quantity": 1,
+        "price": 234
+      }
+    ]
+  }
+]

@@ -1,0 +1,141 @@
+{
+  "store_id": "string",
+  "orders": [
+    {
+      "id": "order-id-1",
+      "customer": {
+        "id": "string",
+        "email_address": "string",
+        "opt_in_status": true,
+        "company": "string",
+        "first_name": "string",
+        "last_name": "string",
+        "orders_count": 4,
+        "total_spent": 100,
+        "address": {
+          "address1": "675 Ponce de Leon Ave NE",
+          "address2": "Suite 5000",
+          "city": "Atlanta",
+          "province": "Georgia",
+          "province_code": "GA",
+          "postal_code": "30308",
+          "country": "United States",
+          "country_code": "US"
+        },
+        "created_at": "2015-07-15T19:28:00+00:00",
+        "updated_at": "2015-07-15T19:28:00+00:00",
+        "_links": [
+          {
+            "rel": "string",
+            "href": "string",
+            "method": "GET",
+            "targetSchema": "string",
+            "schema": "string"
+          }
+        ]
+      },
+      "store_id": "string",
+      "campaign_id": "839488a60b",
+      "landing_site": "http://www.example.com?source=abc",
+      "financial_status": "string",
+      "fulfillment_status": "string",
+      "currency_code": "string",
+      "order_total": 0,
+      "order_url": "string",
+      "discount_total": 0,
+      "tax_total": 0,
+      "shipping_total": 0,
+      "tracking_code": "prec",
+      "processed_at_foreign": "2015-07-15T19:28:00+00:00",
+      "cancelled_at_foreign": "2015-07-15T19:28:00+00:00",
+      "updated_at_foreign": "2015-07-15T19:28:00+00:00",
+      "shipping_address": {
+        "name": "Freddie Chimpenheimer",
+        "address1": "675 Ponce de Leon Ave NE",
+        "address2": "Suite 5000",
+        "city": "Atlanta",
+        "province": "Georgia",
+        "province_code": "GA",
+        "postal_code": "30308",
+        "country": "United States",
+        "country_code": "US",
+        "longitude": -75.68903,
+        "latitude": 45.427408,
+        "phone": "8675309",
+        "company": "string"
+      },
+      "billing_address": {
+        "name": "Freddie Chimpenheimer",
+        "address1": "675 Ponce de Leon Ave NE",
+        "address2": "Suite 5000",
+        "city": "Atlanta",
+        "province": "Georgia",
+        "province_code": "GA",
+        "postal_code": "30308",
+        "country": "United States",
+        "country_code": "US",
+        "longitude": -75.68903,
+        "latitude": 45.427408,
+        "phone": "8675309",
+        "company": "string"
+      },
+      "promos": [
+        {
+          "code": "string",
+          "amount_discounted": 0,
+          "type": "fixed"
+        }
+      ],
+      "lines": [
+        {
+          "id": "string",
+          "product_id": "string",
+          "product_title": "string",
+          "product_variant_id": "string",
+          "product_variant_title": "string",
+          "image_url": "string",
+          "quantity": 0,
+          "price": 0,
+          "discount": 0,
+          "_links": [
+            {
+              "rel": "string",
+              "href": "string",
+              "method": "GET",
+              "targetSchema": "string",
+              "schema": "string"
+            }
+          ]
+        }
+      ],
+      "outreach": {
+        "id": "839488a60b",
+        "name": "Freddie's Jokes",
+        "type": "regular",
+        "published_time": "2017-06-06T13:56:12+00:00"
+      },
+      "tracking_number": "string",
+      "tracking_carrier": "string",
+      "tracking_url": "string",
+      "_links": [
+        {
+          "rel": "string",
+          "href": "string",
+          "method": "GET",
+          "targetSchema": "string",
+          "schema": "string"
+        }
+      ]
+    }
+  ],
+  "total_items": 0,
+  "_links": [
+    {
+      "rel": "string",
+      "href": "string",
+      "method": "GET",
+      "targetSchema": "string",
+      "schema": "string"
+    }
+  ]
+}
