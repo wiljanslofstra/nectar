@@ -3,6 +3,7 @@
  * Do not modify this file manually
  */
 
+export * from './cart';
 export * from './customer';
 export * from './member';
 export * from './order';

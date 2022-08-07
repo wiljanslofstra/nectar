@@ -22,7 +22,7 @@ Some APIs are not yet implemented. Other APIs might not be available for all too
 | Store     | ✅         | ❌       | ❌              |
 | Products  | ✅         | ❌       | ❌              |
 | Orders    | ✅         | ❌       | ❌              |
-| Carts     | ❌         | ❌       | ❌              |
+| Carts     | ✅         | ❌       | ❌              |
 
 ## Usage
 
@@ -67,8 +67,6 @@ It's your job to call this API periodically.
 
 ### Call locally
 
-Build the project into the `/build` directory.
-
 1. Update `config.ts` with your feeds and change to `StubReader` into `JsonReader`, to allow remote fetching.
 2. Build the project `npm run start`
 3. Run `node ./build/src/cli.js`
@@ -99,3 +97,11 @@ To run the build and tests on code changes:
 npm run watch
 npm run test-watch
 ```
+
+## Roadmap
+
+- [ ] Implement ActiveCampaign
+- [ ] Implement Spotler
+- [ ] Implement Hubspot
+- [ ] Implement Mailchimp carts
+- [ ] Implement Mailchimp member tags

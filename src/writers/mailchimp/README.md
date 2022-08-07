@@ -14,6 +14,6 @@
   - [x] Orders
     - [x] List orders
     - [x] Create an PUT or POST batch for orders
-  - [ ] Carts
-    - [ ] List carts
-    - [ ] Create an PUT or POST batch for carts
+  - [x] Carts
+    - [x] List carts
+    - [x] Create an PUT or POST batch for carts

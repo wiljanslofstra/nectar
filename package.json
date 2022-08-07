@@ -22,7 +22,6 @@
     "express-joi-validation": "^5.0.1",
     "express-rate-limit": "^6.5.1",
     "joi": "^17.6",
-    "joi-to-typescript": "^4.0.5",
     "mailchimp-api-v3": "^1.15.0"
   },
   "devDependencies": {
@@ -38,6 +37,7 @@
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "jest": "^28.1.3",
+    "joi-to-typescript": "^4.0.5",
     "supertest": "^6.2.4",
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
