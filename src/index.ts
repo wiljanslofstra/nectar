@@ -11,6 +11,8 @@ import siteValidator from './validators/siteValidator';
 import storeValidator from './validators/storeValidator';
 import MailchimpWriter from './writers/mailchimp';
 import FakeWriter from './writers/fake';
+import cartValidator from './validators/cartValidator';
+import orderValidator from './validators/orderValidator';
 
 const validators: Validators = {
   customers: customerValidator,
@@ -18,6 +20,8 @@ const validators: Validators = {
   site: siteValidator,
   store: storeValidator,
   products: productValidator,
+  orders: orderValidator,
+  carts: cartValidator,
 };
 
 type RunResponse = {

@@ -1,6 +1,7 @@
 [
   {
     "id": "cart-id-1",
+    "store_id": "store-123",
     "customer": {
       "id": "123",
       "email_address": "wiljanslofstra@gmail.com"
@@ -18,6 +19,7 @@
     ]
   }, {
     "id": "cart-id-2",
+    "store_id": "store-123",
     "customer": {
       "id": "234",
       "email_address": "wiljanslofstra2@gmail.com"

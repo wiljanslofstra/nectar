@@ -3,6 +3,8 @@ import { Site } from './site';
 import { Customer } from './customer';
 import { Member } from './member';
 import { Product } from './product';
+import { Cart } from './cart';
+import { Order } from './order';
 
 export interface ValidatorResponse<T> {
   error?: Error;
@@ -17,4 +19,6 @@ export type Validators = {
   site: Validator<Site>;
   store: Validator<Store>;
   products: Validator<Product>;
+  orders: Validator<Order>;
+  carts: Validator<Cart>;
 };
