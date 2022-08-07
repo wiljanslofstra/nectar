@@ -35,10 +35,46 @@ export default async function writeMembers(
     };
   }
 
+  const membersWithTags = members.filter((member) => member.tags);
+  const tagUpdates: object[] = [];
+
+  membersWithTags.forEach((member: Member) => {
+    const subscriberHash = crypto.createHash('md5').update(member.email_address.toLowerCase()).digest('hex');
+
+    member.list_ids.forEach((listId) => {
+      tagUpdates.push({
+        method: 'POST',
+        path: `/lists/${listId}/members/${subscriberHash}/tags`,
+        body: {
+          tags: member.tags?.map((tag) => {
+            return {
+              name: tag,
+              status: 'active',
+            };
+          }),
+        },
+      });
+    });
+  });
+
+  let responses = res;
+  let errors = res.filter((item) => {
+    return !Number.isNaN(parseInt(item.status, 10));
+  });
+
+  if (tagUpdates.length) {
+    const tagsRes = await mailchimp.batch(tagUpdates);
+
+    if (Array.isArray(tagsRes)) {
+      responses = responses.concat(tagsRes);
+      errors = errors.concat(tagsRes.filter((item) => {
+        return !Number.isNaN(parseInt(item.status, 10));
+      }));
+    }
+  }
+
   return {
-    errors: res.filter((item) => {
-      return !Number.isNaN(parseInt(item.status, 10));
-    }),
-    response: res,
+    errors,
+    response: responses,
   };
 }

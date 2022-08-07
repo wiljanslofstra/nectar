@@ -16,6 +16,6 @@ test('should handle members', async () => {
 
   const res = await writeMembers(mailchimp, inputMembers);
 
-  expect(res.errors).toHaveLength(1);
-  expect(res.response).toHaveLength(2);
+  expect(res.errors).toHaveLength(2);
+  expect(res.response).toHaveLength(4);
 });
