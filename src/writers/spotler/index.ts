@@ -1,14 +1,14 @@
 import bunyan from 'bunyan';
 import { Writer, WriterInput, WriterResponse } from '../../types/writer';
-import ActiveCampaignClient from './client';
+import SpotlerClient from './client';
 import writeContacts from './modules/contacts';
 
-export default class ActiveCampaignWriter implements Writer {
+export default class SpotlerWriter implements Writer {
   log?: bunyan;
 
-  client: ActiveCampaignClient;
+  client: SpotlerClient;
 
-  constructor(client: ActiveCampaignClient) {
+  constructor(client: SpotlerClient) {
     this.client = client;
   }
 

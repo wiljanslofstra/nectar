@@ -1,6 +1,7 @@
 import * as Joi from 'joi';
 
 const schema = Joi.object({
+  id: Joi.alternatives().try(Joi.string(), Joi.number()),
   mailchimp_list_ids: Joi.array().items(Joi.string()),
   email_address: Joi.string().email().max(200).required(),
   status: Joi.string().allow('subscribed', 'unsubscribed', 'transactional').required(),
@@ -12,12 +13,17 @@ const schema = Joi.object({
     .object()
     .pattern(Joi.string(), Joi.alternatives().try(Joi.string(), Joi.number())),
   tags: Joi.array().items(Joi.string()),
-  active_campaign_first_name: Joi.string(),
-  active_campaign_last_name: Joi.string(),
+  first_name: Joi.string(),
+  last_name: Joi.string(),
   active_campaign_phone_number: Joi.string(),
   active_campaign_fields: Joi
     .object()
     .pattern(Joi.number(), Joi.alternatives().try(Joi.string(), Joi.number())),
+  spotler_properties: Joi
+    .object()
+    .pattern(Joi.number(), Joi.alternatives().try(Joi.string(), Joi.number())),
+  spotler_channels: Joi.array().items(Joi.string()),
+  spotler_permissions: Joi.array().items(Joi.string()),
 })
   .label('Member');
 

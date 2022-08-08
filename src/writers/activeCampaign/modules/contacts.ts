@@ -23,8 +23,8 @@ const memberToActiveCampaignObject = (member: Member) => {
   return {
     contact: {
       email: member.email_address,
-      firstName: member.active_campaign_first_name,
-      lastName: member.active_campaign_last_name,
+      firstName: member.first_name,
+      lastName: member.last_name,
       phone: member.active_campaign_phone_number,
       fieldValues,
     },
