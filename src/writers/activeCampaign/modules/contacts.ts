@@ -44,7 +44,7 @@ export default async function writeContacts(
   for (const update of updates) {
     try {
       // eslint-disable-next-line no-await-in-loop
-      const res = await client.post('/import/bulk_import', update);
+      const res = await client.post('/contact/sync', update);
 
       responses.push(res);
     } catch (err) {
