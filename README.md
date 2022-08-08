@@ -16,7 +16,7 @@ Some APIs are not yet implemented. Other APIs might not be available for all too
 
 |           | Mailchimp | Spotler | ActiveCampaign |
 |-----------|-----------|---------|----------------|
-| Members   | ✅         | ❌       | ❌              |
+| Members   | ✅         | ❌       | ✅              |
 | Site      | ✅         | ❌       | ❌              |
 | Customers | ✅         | ❌       | ❌              |
 | Store     | ✅         | ❌       | ❌              |

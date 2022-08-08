@@ -15,6 +15,9 @@ const config: Config = {
     mailchimp: {
       key: process.env.MAILCHIMP_KEY || 'test123',
     },
+    activeCampaign: {
+      accountName: process.env.ACTIVE_CAMPAIGN_ACCOUNT || 'test123',
+    },
   },
 };
 

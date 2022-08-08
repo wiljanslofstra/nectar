@@ -1,5 +1,6 @@
 import { Site } from '../../../types';
-import { mailchimpMock, readStubObject } from '../mailchimp-test-helpers';
+import { readStubObject } from '../../writerTestHelpers';
+import { mailchimpMock } from '../mailchimpTestHelpers';
 import writeSite from './site';
 
 test('should only get site when exists', async () => {

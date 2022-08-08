@@ -1,5 +1,6 @@
 import { Store } from '../../../types';
-import { mailchimpMock, readStubObject } from '../mailchimp-test-helpers';
+import { readStubObject } from '../../writerTestHelpers';
+import { mailchimpMock } from '../mailchimpTestHelpers';
 import writeStore from './store';
 
 test('should only get store when exists', async () => {

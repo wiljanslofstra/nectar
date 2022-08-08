@@ -7,6 +7,9 @@ export default interface Config {
     mailchimp?: {
       key: string;
     },
+    activeCampaign: {
+      accountName: string;
+    },
     fake?: {
       key: string;
     },

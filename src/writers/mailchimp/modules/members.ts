@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import Mailchimp, { MailchimpMethodReturn } from '../mailchimp-type';
+import Mailchimp, { MailchimpMethodReturn } from '../mailchimpType';
 import { Member } from '../../../types/member';
 
 export default async function writeMembers(
@@ -11,7 +11,11 @@ export default async function writeMembers(
   members.forEach((member) => {
     const subscriberHash = crypto.createHash('md5').update(member.email_address.toLowerCase()).digest('hex');
 
-    member.list_ids.forEach((listId) => {
+    if (!member.mailchimp_list_ids) {
+      return;
+    }
+
+    member.mailchimp_list_ids.forEach((listId) => {
       updates.push({
         method: 'PUT',
         path: `/lists/${listId}/members/${subscriberHash}`,
@@ -41,7 +45,11 @@ export default async function writeMembers(
   membersWithTags.forEach((member: Member) => {
     const subscriberHash = crypto.createHash('md5').update(member.email_address.toLowerCase()).digest('hex');
 
-    member.list_ids.forEach((listId) => {
+    if (!member.mailchimp_list_ids) {
+      return;
+    }
+
+    member.mailchimp_list_ids.forEach((listId) => {
       tagUpdates.push({
         method: 'POST',
         path: `/lists/${listId}/members/${subscriberHash}/tags`,

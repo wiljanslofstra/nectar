@@ -1,6 +1,6 @@
 import bunyan from 'bunyan';
 import { Writer, WriterInput, WriterResponse } from '../../types/writer';
-import MailchimpType from './mailchimp-type';
+import MailchimpType from './mailchimpType';
 import writeSite from './modules/site';
 import writeMembers from './modules/members';
 import writeStore from './modules/store';
@@ -27,20 +27,20 @@ export default class MailchimpWriter implements Writer {
     if (input.site) {
       // Store site.
       const { errors: siteErrors } = await writeSite(this.mailchimp, input.site);
-      errors = errors.concat(errors, siteErrors);
+      errors = errors.concat(siteErrors);
     }
 
     if (input.members) {
       // Store members.
       const { errors: membersErrors } = await writeMembers(this.mailchimp, input.members);
-      errors = errors.concat(errors, membersErrors);
+      errors = errors.concat(membersErrors);
     }
 
     // Store is required to send customers and other e-commerce data.
     if (input.store) {
       // Store store.
       const { errors: storeErrors } = await writeStore(this.mailchimp, input.store);
-      errors = errors.concat(errors, storeErrors);
+      errors = errors.concat(storeErrors);
 
       if (storeErrors.length === 0) {
         if (input.customers) {
@@ -50,7 +50,7 @@ export default class MailchimpWriter implements Writer {
             input.store.id,
             input.customers,
           );
-          errors = errors.concat(errors, customersErrors);
+          errors = errors.concat(customersErrors);
         }
 
         if (input.products) {
@@ -60,7 +60,7 @@ export default class MailchimpWriter implements Writer {
             input.store.id,
             input.products,
           );
-          errors = errors.concat(errors, productsErrors);
+          errors = errors.concat(productsErrors);
         }
 
         if (input.orders) {
@@ -70,7 +70,7 @@ export default class MailchimpWriter implements Writer {
             input.store.id,
             input.orders,
           );
-          errors = errors.concat(errors, ordersErrors);
+          errors = errors.concat(ordersErrors);
         }
 
         // TODO: Write carts

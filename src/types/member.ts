@@ -4,6 +4,10 @@
  */
 
 export interface Member {
+  active_campaign_fields?: object;
+  active_campaign_first_name?: string;
+  active_campaign_last_name?: string;
+  active_campaign_phone_number?: string;
   custom_fields?: {
     /**
      * Unknown Property
@@ -12,7 +16,7 @@ export interface Member {
   };
   email_address: string;
   language: 'en' | 'ar' | 'af' | 'be' | 'bg' | 'ca' | 'zh' | 'hr' | 'cs' | 'da' | 'nl' | 'et' | 'fa' | 'fi' | 'fr' | 'fr_CA' | 'de' | 'el' | 'he' | 'hi' | 'hu' | 'is' | 'id' | 'ga' | 'it' | 'ja' | 'km' | 'ko' | 'lv' | 'lt' | 'mt' | 'ms' | 'mk' | 'no' | 'pl' | 'pt' | 'pt_PT' | 'ro' | 'ru' | 'sr' | 'sk' | 'sl' | 'es' | 'es_ES' | 'sw' | 'sv' | 'ta' | 'th' | 'tr' | 'uk' | 'vi';
-  list_ids: string[];
+  mailchimp_list_ids?: string[];
   status: 'subscribed' | 'unsubscribed' | 'transactional';
   tags?: string[];
 }

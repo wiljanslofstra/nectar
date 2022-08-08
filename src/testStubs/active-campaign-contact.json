@@ -1,0 +1,72 @@
+{
+  "fieldValues": [
+    {
+      "contact": "10",
+      "field": "2",
+      "value": "Albany",
+      "cdate": "2022-04-14T10:03:23-05:00",
+      "udate": "2022-04-14T10:03:23-05:00",
+      "created_by": null,
+      "updated_by": null,
+      "links": {
+        "owner": "https://:account.api-us1.com/api/3/fieldValues/14/owner",
+        "field": "https://:account.api-us1.com/api/3/fieldValues/14/field"
+      },
+      "id": "14",
+      "owner": "10"
+    },
+    {
+      "contact": "10",
+      "field": "3",
+      "value": "Georgia",
+      "cdate": "2022-04-14T10:03:23-05:00",
+      "udate": "2022-04-14T10:03:23-05:00",
+      "created_by": null,
+      "updated_by": null,
+      "links": {
+        "owner": "https://:account.api-us1.com/api/3/fieldValues/15/owner",
+        "field": "https://:account.api-us1.com/api/3/fieldValues/15/field"
+      },
+      "id": "15",
+      "owner": "10"
+    }
+  ],
+  "contact": {
+    "email": "johndoe@example.com",
+    "phone": "7223224241",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email_empty": false,
+    "cdate": "2022-04-14T10:03:23-05:00",
+    "udate": "2022-04-14T10:03:23-05:00",
+    "orgid": "",
+    "orgname": "",
+    "links": {
+      "bounceLogs": "https://:account.api-us1.com/api/3/contacts/10/bounceLogs",
+      "contactAutomations": "https://:account.api-us1.com/api/3/contacts/10/contactAutomations?limit=1000&orders%5Blastdate%5D=DESC",
+      "contactData": "https://:account.api-us1.com/api/3/contacts/10/contactData",
+      "contactGoals": "https://:account.api-us1.com/api/3/contacts/10/contactGoals",
+      "contactLists": "https://:account.api-us1.com/api/3/contacts/10/contactLists",
+      "contactLogs": "https://:account.api-us1.com/api/3/contacts/10/contactLogs",
+      "contactTags": "https://:account.api-us1.com/api/3/contacts/10/contactTags",
+      "contactDeals": "https://:account.api-us1.com/api/3/contacts/10/contactDeals",
+      "deals": "https://:account.api-us1.com/api/3/contacts/10/deals",
+      "fieldValues": "https://:account.api-us1.com/api/3/contacts/10/fieldValues",
+      "geoIps": "https://:account.api-us1.com/api/3/contacts/10/geoIps",
+      "notes": "https://:account.api-us1.com/api/3/contacts/10/notes",
+      "organization": "https://:account.api-us1.com/api/3/contacts/10/organization",
+      "plusAppend": "https://:account.api-us1.com/api/3/contacts/10/plusAppend",
+      "trackingLogs": "https://:account.api-us1.com/api/3/contacts/10/trackingLogs",
+      "scoreValues": "https://:account.api-us1.com/api/3/contacts/10/scoreValues",
+      "accountContacts": "https://:account.api-us1.com/api/3/contacts/10/accountContacts",
+      "automationEntryCounts": "https://:account.api-us1.com/api/3/contacts/10/automationEntryCounts"
+    },
+    "hash": "75b8163f768dff1f0f7b5f69476b986a",
+    "fieldValues": [
+      "14",
+      "15"
+    ],
+    "id": "10",
+    "organization": ""
+  }
+}

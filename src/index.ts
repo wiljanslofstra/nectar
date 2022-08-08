@@ -13,6 +13,8 @@ import MailchimpWriter from './writers/mailchimp';
 import FakeWriter from './writers/fake';
 import cartValidator from './validators/cartValidator';
 import orderValidator from './validators/orderValidator';
+import ActiveCampaignWriter from './writers/activeCampaign';
+import ActiveCampaignClient from './writers/activeCampaign/client';
 
 const validators: Validators = {
   customers: customerValidator,
@@ -176,15 +178,16 @@ class Nectar {
   writerConfigToWriters(writers: Config['writers']): Writer[] {
     const writerInstances = [];
 
-    // eslint-disable-next-line no-restricted-syntax
-    for (const [writerKey, writerConfig] of Object.entries(writers)) {
-      if (writerKey === 'mailchimp' && writerConfig) {
-        writerInstances.push(new MailchimpWriter(new Mailchimp(writerConfig.key)));
-      }
+    if (writers.mailchimp) {
+      writerInstances.push(new MailchimpWriter(new Mailchimp(writers.mailchimp.key)));
+    }
 
-      if (writerKey === 'fake' && writerConfig) {
-        writerInstances.push(new FakeWriter());
-      }
+    if (writers.activeCampaign) {
+      writerInstances.push(new ActiveCampaignWriter(new ActiveCampaignClient(writers.activeCampaign.accountName)));
+    }
+
+    if (writers.fake) {
+      writerInstances.push(new FakeWriter());
     }
 
     return writerInstances;

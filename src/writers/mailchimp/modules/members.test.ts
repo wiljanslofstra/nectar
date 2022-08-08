@@ -1,5 +1,6 @@
 import { Member } from '../../../types';
-import { mailchimpMock, readStubArray } from '../mailchimp-test-helpers';
+import { readStubArray } from '../../writerTestHelpers';
+import { mailchimpMock } from '../mailchimpTestHelpers';
 import writeMembers from './members';
 
 test('should handle members', async () => {
