@@ -15,6 +15,8 @@ import cartValidator from './validators/cartValidator';
 import orderValidator from './validators/orderValidator';
 import ActiveCampaignWriter from './writers/activeCampaign';
 import ActiveCampaignClient from './writers/activeCampaign/client';
+import SpotlerWriter from './writers/spotler';
+import SpotlerClient from './writers/spotler/client';
 
 const validators: Validators = {
   customers: customerValidator,
@@ -188,6 +190,18 @@ class Nectar {
           new ActiveCampaignClient(
             writers.activeCampaign.accountName,
             writers.activeCampaign.token,
+          ),
+        ),
+      );
+    }
+
+    if (writers.spotler) {
+      writerInstances.push(
+        new SpotlerWriter(
+          new SpotlerClient(
+            writers.spotler.host,
+            writers.spotler.key,
+            writers.spotler.secret,
           ),
         ),
       );

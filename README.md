@@ -58,6 +58,15 @@ node ./build/server.js
   "writers": {
     "mailchimp": {
       "key": "12345678987654321123456789876543-us14"
+    },
+    "activeCampaign": {
+      "accountName": "wiljanslofstra",
+      "token": "123456789876543212345678987654321"
+    },
+    "spotler": {
+      "host": "https://restapi.mailplus.nl/integrationservice-1.1.0",
+      "key": "123456789876543212345678987654321",
+      "secret": "123456789876543212345678987654321"
     }
   }
 }

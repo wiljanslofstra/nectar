@@ -7,9 +7,14 @@ export default interface Config {
     mailchimp?: {
       key: string;
     },
-    activeCampaign: {
+    activeCampaign?: {
       accountName: string;
       token: string;
+    },
+    spotler?: {
+      host: string;
+      key: string;
+      secret: string;
     },
     fake?: {
       key: string;
