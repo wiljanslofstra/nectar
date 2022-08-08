@@ -1,5 +1,5 @@
 import { Order } from '../../../types/order';
-import Mailchimp, { MailchimpMethodReturn } from '../mailchimp-type';
+import Mailchimp, { MailchimpMethodReturn } from '../mailchimpType';
 import { recursiveFetch } from '../helpers';
 
 function orderToBody(order: Order) {

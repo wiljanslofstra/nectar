@@ -1,4 +1,4 @@
-import Mailchimp from './mailchimp-type';
+import Mailchimp from './mailchimpType';
 
 // eslint-disable-next-line import/prefer-default-export
 export async function recursiveFetch(

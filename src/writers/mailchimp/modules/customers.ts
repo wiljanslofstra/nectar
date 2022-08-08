@@ -1,4 +1,4 @@
-import Mailchimp, { MailchimpMethodReturn } from '../mailchimp-type';
+import Mailchimp, { MailchimpMethodReturn } from '../mailchimpType';
 import { Customer } from '../../../types/customer';
 
 export default async function writeCustomers(

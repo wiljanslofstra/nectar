@@ -1,4 +1,4 @@
-import Mailchimp, { MailchimpMethodReturn } from '../mailchimp-type';
+import Mailchimp, { MailchimpMethodReturn } from '../mailchimpType';
 import { Store } from '../../../types/store';
 
 const getStore = async (mailchimp: Mailchimp, store: Store): Promise<Array<Error | any>> => {

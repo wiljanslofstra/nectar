@@ -183,7 +183,9 @@ class Nectar {
     }
 
     if (writers.activeCampaign) {
-      writerInstances.push(new ActiveCampaignWriter(new ActiveCampaignClient(writers.activeCampaign.accountName)));
+      writerInstances.push(
+        new ActiveCampaignWriter(new ActiveCampaignClient(writers.activeCampaign.accountName)),
+      );
     }
 
     if (writers.fake) {

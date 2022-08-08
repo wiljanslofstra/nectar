@@ -1,5 +1,5 @@
 import { Cart } from '../../../types/cart';
-import Mailchimp, { MailchimpMethodReturn } from '../mailchimp-type';
+import Mailchimp, { MailchimpMethodReturn } from '../mailchimpType';
 import { recursiveFetch } from '../helpers';
 
 function cartToBody(cart: Cart) {

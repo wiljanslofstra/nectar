@@ -1,4 +1,4 @@
-import Mailchimp, { MailchimpMethodReturn } from '../mailchimp-type';
+import Mailchimp, { MailchimpMethodReturn } from '../mailchimpType';
 import { Product } from '../../../types';
 import { recursiveFetch } from '../helpers';
 

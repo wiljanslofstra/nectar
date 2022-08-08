@@ -2,7 +2,7 @@ import rateLimit from 'express-rate-limit';
 import { Express } from 'express';
 import Validator from 'express-joi-validation';
 import { promises as fs } from 'fs';
-import serverSyncSchema from '../schemas/server-sync';
+import serverSyncSchema from '../schemas/serverSync';
 import Nectar from '..';
 import JsonReader from '../readers/jsonReader';
 import StubReader from '../readers/stubReader';
