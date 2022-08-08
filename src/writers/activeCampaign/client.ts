@@ -1,10 +1,15 @@
+import fetch from 'node-fetch';
+
 type RequestMethods = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 export default class ActiveCampaignClient {
   baseUrl: string;
 
-  constructor(accountName: string) {
+  token: string;
+
+  constructor(accountName: string, token: string) {
     this.baseUrl = `https://${accountName}.api-us1.com/api/3/`;
+    this.token = token;
   }
 
   async get(url: string) {
@@ -28,14 +33,11 @@ export default class ActiveCampaignClient {
 
     const response = await fetch(url, {
       method,
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
       headers: {
         'Content-Type': 'application/json',
+        'Api-Token': this.token,
       },
       redirect: 'follow',
-      referrerPolicy: 'no-referrer',
       body: JSON.stringify(data),
     });
 

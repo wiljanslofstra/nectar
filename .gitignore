@@ -2,3 +2,4 @@
 /src/types/*.validator.ts
 /build
 nectar-info.log
+personal_test.sh

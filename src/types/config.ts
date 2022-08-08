@@ -9,6 +9,7 @@ export default interface Config {
     },
     activeCampaign: {
       accountName: string;
+      token: string;
     },
     fake?: {
       key: string;

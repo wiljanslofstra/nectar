@@ -12,11 +12,12 @@ const config: Config = {
     orders: 'orders.json',
   },
   writers: {
-    mailchimp: {
-      key: process.env.MAILCHIMP_KEY || 'test123',
-    },
+    // mailchimp: {
+    //   key: process.env.MAILCHIMP_KEY || 'test123',
+    // },
     activeCampaign: {
       accountName: process.env.ACTIVE_CAMPAIGN_ACCOUNT || 'test123',
+      token: process.env.ACTIVE_CAMPAIGN_TOKEN || 'test123',
     },
   },
 };

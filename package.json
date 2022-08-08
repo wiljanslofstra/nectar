@@ -17,12 +17,14 @@
     "copy-stubs": "mkdir -p ./build/testStubs/ && cp -R ./src/testStubs/. ./build/testStubs/"
   },
   "dependencies": {
+    "@types/node-fetch": "^2.6.2",
     "bunyan": "^1.8.15",
     "express": "^4.18.1",
     "express-joi-validation": "^5.0.1",
     "express-rate-limit": "^6.5.1",
     "joi": "^17.6",
-    "mailchimp-api-v3": "^1.15.0"
+    "mailchimp-api-v3": "^1.15.0",
+    "node-fetch": "^2.6.7"
   },
   "devDependencies": {
     "@types/bunyan": "^1.8.8",

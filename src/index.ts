@@ -184,7 +184,12 @@ class Nectar {
 
     if (writers.activeCampaign) {
       writerInstances.push(
-        new ActiveCampaignWriter(new ActiveCampaignClient(writers.activeCampaign.accountName)),
+        new ActiveCampaignWriter(
+          new ActiveCampaignClient(
+            writers.activeCampaign.accountName,
+            writers.activeCampaign.token,
+          ),
+        ),
       );
     }
 

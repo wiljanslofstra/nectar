@@ -4,7 +4,7 @@ import ActiveCampaignClient from './client';
 export function activeCampaignMock(
   overwriteObj: { [key: string]: Function },
 ): ActiveCampaignClient {
-  const client: any = new ActiveCampaignClient('test123');
+  const client: any = new ActiveCampaignClient('test123', 'test234');
 
   Object.keys(overwriteObj).forEach((key) => {
     client[key] = overwriteObj[key];
