@@ -2,6 +2,9 @@
   "version": "0.0.1",
   "name": "nectar",
   "main": "src/index.ts",
+  "engines": {
+    "node": ">=14"
+  },
   "scripts": {
     "start": "tsc",
     "poststart": "npm run copy-static",

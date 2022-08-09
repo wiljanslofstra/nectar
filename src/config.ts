@@ -12,12 +12,17 @@ const config: Config = {
     orders: 'orders.json',
   },
   writers: {
-    // mailchimp: {
-    //   key: process.env.MAILCHIMP_KEY || 'test123',
-    // },
+    mailchimp: {
+      key: process.env.MAILCHIMP_KEY || '',
+    },
     activeCampaign: {
-      accountName: process.env.ACTIVE_CAMPAIGN_ACCOUNT || 'test123',
-      token: process.env.ACTIVE_CAMPAIGN_TOKEN || 'test123',
+      accountName: process.env.ACTIVE_CAMPAIGN_ACCOUNT || '',
+      token: process.env.ACTIVE_CAMPAIGN_TOKEN || '',
+    },
+    spotler: {
+      host: 'https://restapi.mailplus.nl/integrationservice-1.1.0',
+      key: process.env.SPOTLER_KEY || '',
+      secret: process.env.SPOTLER_SECRET || '',
     },
   },
 };

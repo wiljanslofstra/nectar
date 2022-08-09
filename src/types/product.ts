@@ -4,16 +4,19 @@
  */
 
 export interface Product {
+  category?: string;
   description?: string;
   handle?: string;
   id: string;
   image_url?: string;
+  language?: 'en' | 'ar' | 'af' | 'be' | 'bg' | 'ca' | 'zh' | 'hr' | 'cs' | 'da' | 'nl' | 'et' | 'fa' | 'fi' | 'fr' | 'fr_CA' | 'de' | 'el' | 'he' | 'hi' | 'hu' | 'is' | 'id' | 'ga' | 'it' | 'ja' | 'km' | 'ko' | 'lv' | 'lt' | 'mt' | 'ms' | 'mk' | 'no' | 'pl' | 'pt' | 'pt_PT' | 'ro' | 'ru' | 'sr' | 'sk' | 'sl' | 'es' | 'es_ES' | 'sw' | 'sv' | 'ta' | 'th' | 'tr' | 'uk' | 'vi';
   published_at_foreign?: string;
   store_id: string;
   title: string;
   type?: string;
   url?: string;
   variants: ({
+    gtin?: string;
     id: string;
     image_url?: string;
     inventory_quantity?: number;

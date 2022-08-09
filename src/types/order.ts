@@ -38,6 +38,7 @@ export interface Order {
   financial_status?: 'paid' | 'pending' | 'refunded' | 'cancelled';
   fulfillment_status?: 'shipped' | 'pending' | 'cancelled';
   id: string;
+  language?: 'en' | 'ar' | 'af' | 'be' | 'bg' | 'ca' | 'zh' | 'hr' | 'cs' | 'da' | 'nl' | 'et' | 'fa' | 'fi' | 'fr' | 'fr_CA' | 'de' | 'el' | 'he' | 'hi' | 'hu' | 'is' | 'id' | 'ga' | 'it' | 'ja' | 'km' | 'ko' | 'lv' | 'lt' | 'mt' | 'ms' | 'mk' | 'no' | 'pl' | 'pt' | 'pt_PT' | 'ro' | 'ru' | 'sr' | 'sk' | 'sl' | 'es' | 'es_ES' | 'sw' | 'sv' | 'ta' | 'th' | 'tr' | 'uk' | 'vi';
   lines: {
     discount?: number;
     id: string;

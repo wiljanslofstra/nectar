@@ -14,15 +14,18 @@ Nectar is CLI application to sync data to mail tools like Mailchimp, ActiveCampa
 
 Some APIs are not yet implemented. Other APIs might not be available for all tools.
 
-|           | Mailchimp | Spotler | ActiveCampaign |
+|           | Mailchimp | Spotler* | ActiveCampaign |
 |-----------|-----------|---------|----------------|
 | Members   | ✅         | ✅       | ✅              |
 | Site      | ✅         | ❌       | ❌              |
 | Customers | ✅         | ❌       | ❌              |
 | Store     | ✅         | ❌       | ❌              |
-| Products  | ✅         | ❌       | ❌              |
-| Orders    | ✅         | ❌       | ❌              |
+| Products  | ✅         | ✅       | ❌              |
+| Orders    | ✅         | ✅       | ❌              |
 | Carts     | ✅         | ❌       | ❌              |
+
+* Implementation is not yet tested on a real account. The implementation is based on
+the API documentation and a PHP implementation I did a while ago.
 
 ## Usage
 
@@ -32,7 +35,7 @@ You can find all available properties in the [TypeScript types folder](./src/typ
 > ⚠️ To sync customers, products, orders and carts. You've to implement the store feed. A
 > store is required to sync e-commerce data.
 
-### Call Express server
+### Option 1: Express server
 
 Start server:
 
@@ -42,6 +45,9 @@ node ./build/server.js
 # Default is port 3000. To start on another port:
 # PORT=8000 node ./build/server.js
 ```
+
+> ⚠️ If you're gonna host this project publicly, you might want to add some sort
+> of authentication in front of this app. Maybe some HTTP basic auth or IP allow list.
 
 `POST` to `127.0.0.1:3000/sync` with a config JSON. For example:
 
@@ -72,9 +78,11 @@ node ./build/server.js
 }
 ```
 
-It's your job to call this API periodically.
+It's your job to call this API periodically. And I would suggest keeping the interval
+large enough for each sync to complete. Every run can take some time, based
+on the size of your dataset.
 
-### Call locally
+### Option 2: Call locally
 
 1. Update `config.ts` with your feeds and change to `StubReader` into `JsonReader`, to allow remote fetching.
 2. Build the project `npm run start`
@@ -109,8 +117,9 @@ npm run test-watch
 
 ## Roadmap
 
-- [ ] Implement ActiveCampaign
-- [ ] Implement Spotler
+- [x] Implement ActiveCampaign
+  - [x] Members
+  - [ ] Products => It seems that this is not a thing in ActiveCampaign. Maybe it can be shaped into a "Custom object".
+  - [ ] [Orders](https://developers.activecampaign.com/reference/create-order)
+  - [ ] [Carts](https://developers.activecampaign.com/reference/e-commerce-abandoned-carts)
 - [ ] Implement Hubspot
-- [ ] Implement Mailchimp carts
-- [ ] Implement Mailchimp member tags

@@ -180,11 +180,17 @@ class Nectar {
   writerConfigToWriters(writers: Config['writers']): Writer[] {
     const writerInstances = [];
 
-    if (writers.mailchimp) {
-      writerInstances.push(new MailchimpWriter(new Mailchimp(writers.mailchimp.key)));
+    if (writers.mailchimp && writers.mailchimp.key) {
+      writerInstances.push(
+        new MailchimpWriter(new Mailchimp(writers.mailchimp.key)),
+      );
     }
 
-    if (writers.activeCampaign) {
+    if (
+      writers.activeCampaign
+      && writers.activeCampaign.accountName
+      && writers.activeCampaign.token
+    ) {
       writerInstances.push(
         new ActiveCampaignWriter(
           new ActiveCampaignClient(
@@ -195,7 +201,7 @@ class Nectar {
       );
     }
 
-    if (writers.spotler) {
+    if (writers.spotler && writers.spotler.key && writers.spotler.secret) {
       writerInstances.push(
         new SpotlerWriter(
           new SpotlerClient(
