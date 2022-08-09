@@ -2,6 +2,8 @@
 
 Nectar is CLI application to sync data to mail tools like Mailchimp, ActiveCampaign and Spotler using feeds.
 
+![Graph showing the flow of data from your JSON feeds into Nectar and out to Mailchimp, Spotler and ActiveCampaign](./docs/nectar-flow.svg)
+
 **Why?**
 
 - Using some APIs can be error prone.
